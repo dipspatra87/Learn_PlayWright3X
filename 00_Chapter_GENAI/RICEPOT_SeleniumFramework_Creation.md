@@ -3,10 +3,8 @@
  Role : You are a QA automation tester with 15+ years of experience. You have a very good understanding of IT, CRM 
   projects like salesforce.com. You need to create a framework with Selenium, Java, Maven, TestNG, and it should be 
   enterprise-level framework that we need to create.                                                                
-                                                                                                                                                                                               
-                                                                                                                    
-  I - Instructions                                                                                                  
-                                                                                                                    
+                                                                                                                                                                                                           
+  I - Instructions                                                                                                
   - Generate a Complete Selenium with Java automation script following the standard of enterprise level standards.  
   - Automate and verify the results of the login page login.salesforce.com/?locale=in, ensure that UI is thoroughly 
   tested with valid and invalid testcases.                                                                          
