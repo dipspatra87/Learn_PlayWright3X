@@ -23,6 +23,8 @@ A learning repository tracking JavaScript fundamentals from first principles, al
 - [07 Switch Statements](#07-switch-statements)
 - [08 User Input](#08-user-input)
 - [09 — Loops](#09--loops)
+- [10 — Arrays](#10--arrays)
+- [MCQ — Practice Questions](#mcq--practice-questions)
 - [IQ_Notes — Reference Library](#iq_notes--reference-library)
 
 ---
@@ -107,7 +109,23 @@ LearnPlaywright3x/
 │   ├── 61_Do_While.js                        # do-while — guaranteed first execution
 │   ├── 62_DoWhile_vs_While.js                # do-while vs while: guaranteed-first vs check-first
 │   └── 63_NestedFor_lOOP.js                  # nested for loops — full matrix (i, j)
-└── IQ_Notes/
+├── 10_chapter_Arrays/
+│   ├── 64_Array.js                           # at(), length, negative indexing with at()
+│   ├── 65_Array.js                           # array basics, length property, mixed types
+│   ├── 66_Array_Creation.js                  # literal, constructor, Array.of(), Array.from()
+│   ├── 67_Array_Access_Modify.js             # bracket & at() access, mutating by index
+│   ├── 68_Arrays_Adding_Remove.js            # push/pop/unshift/shift/splice
+│   ├── 69_Array_REAL.js                      # real-world browser list iteration
+│   ├── 70_Array_Searching.js                 # indexOf, lastIndexOf, includes
+│   ├── 71_IQ.js                              # find, findIndex, findLast, findLastIndex
+│   └── 72_Array_Interate.js                  # for, for...of, forEach, entries(), for...in
+├── MCQ/
+│   └── Array_MCQ.md                          # array interview practice questions
+├── SeleniumFramework/                         # Maven + TestNG Selenium project (src, pom.xml, testng.xml)
+├── Practice_5thJuly/
+│   └── RICEPOT_Day1_Practice.md              # RICE prompt practice — Day 1
+├── chapter_01_Basics/                          # duplicate of 01-02 fundamentals
+├── IQ_Notes/
     ├── README.md                             # reusable prompt template for new IQ notes
     ├── Source_Code_ByteCODE_Binary_IQ.md      # source vs bytecode vs machine code
     ├── 01_Identifier_Rules.md                 # identifier rules reference
@@ -702,7 +720,74 @@ for (let i = 0; i < 3; i++) {
 
 ---
 
-## IQ_Notes — Reference Library
+### 10 — Arrays
+
+**Concept:** Arrays are ordered, zero-indexed collections that can hold mixed types. This chapter covers creation (literal, constructor, `Array.of`, `Array.from`), access and mutation, adding/removing elements (`push`/`pop`/`unshift`/`shift`/`splice`), searching (`indexOf`, `includes`, `find`, `findIndex`), and iteration (`for`, `for...of`, `forEach`, `entries`, `for...in`).
+
+**Why:** Playwright locators return arrays of elements (`page.locator()`) — knowing how to search, iterate, and safely index into them with `at()` (which handles negatives) avoids brittle `[0]` access.
+
+**Q&A — why use this?**
+- **Q: Why does array index -1 return `undefined`?** A: Standard bracket `[-1]` treats `-1` as a property name, not an offset. Use `arr.at(-1)` (ES2022+) for true negative indexing from the end.
+- **Q: What's the difference between `push` and `unshift`?** A: `push` appends to the end (O(1)), `unshift` inserts at the start (O(n) — shifts all elements).
+- **Q: What's `splice` vs `slice`?** A: `splice` mutates the original array (remove/replace/insert in place); `slice` returns a new array without changing the original.
+- **Q: When to use `for...in` vs `for...of` on arrays?** A: `for...of` iterates values; `for...in` iterates **index strings** — it's designed for objects, not arrays, and can include prototype keys.
+
+```mermaid
+flowchart LR
+    Create["Create"] --> Literal["[a, b, c] — preferred"]
+    Create --> Of["Array.of(1, 2, 3)"]
+    Create --> From["Array.from('hello')"]
+    Modify["Add/Remove"] --> Push["push/pop — end"]
+    Modify --> Shift["unshift/shift — start"]
+    Modify --> Splice["splice — anywhere"]
+    Search["Search"] --> Index["indexOf / lastIndexOf / includes"]
+    Search --> Find["find / findIndex / findLast"]
+```
+
+```js
+// Creation
+let browsers = ["chrome", "firefox", "webkit"];
+let chars     = Array.from("hello");    // ["h","e","l","l","o"]
+let scores    = Array.of(10, 20, 30);   // [10, 20, 30]
+
+// Access
+console.log(browsers[0]);     // "chrome"
+console.log(browsers.at(-1)); // "webkit"  ← true negative index
+
+// Add / Remove
+browsers.push("edge");        // end
+browsers.pop();               // remove end
+browsers.unshift("safari");   // start
+browsers.shift();             // remove start
+browsers.splice(1, 1);        // remove at index 1
+
+// Search
+["pass", "fail"].indexOf("fail");      // 1
+["pass", "fail"].includes("error");    // false
+[10, 25, 30].find(n => n > 20);        // 25
+[10, 25, 30].findIndex(n => n > 20);   // 1
+
+// Iteration
+for (let i = 0; i < tests.length; i++) { }
+for (let test of tests) { }
+tests.forEach((t, i) => console.log(i, t));
+```
+
+---
+
+## MCQ — Practice Questions
+
+**Concept:** Multiple-choice questions covering array methods and JS quirks, designed for interview prep and self-assessment.
+
+**Why:** Active recall solidifies understanding faster than re-reading code — each MCQ exposes a specific gotcha (`push` returns the new length, not the array; `sort()` coerces to strings).
+
+| File | Covers |
+|------|--------|
+| [`Array_MCQ.md`](MCQ/Array_MCQ.md) | Array push return value, sort coercion, and more |
+
+---
+
+
 
 Concept explainers, generated on demand via the prompt template in [`IQ_Notes/README.md`](IQ_Notes/README.md) — table breakdown, code walkthrough, pipeline diagram, TL;DR.
 
