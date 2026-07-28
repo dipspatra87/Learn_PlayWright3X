@@ -118,7 +118,8 @@ LearnPlaywright3x/
 │   ├── 69_Array_REAL.js                      # real-world browser list iteration
 │   ├── 70_Array_Searching.js                 # indexOf, lastIndexOf, includes
 │   ├── 71_IQ.js                              # find, findIndex, findLast, findLastIndex
-│   └── 72_Array_Interate.js                  # for, for...of, forEach, entries(), for...in
+│   ├── 72_Array_Interate.js                  # for, for...of, forEach, entries(), for...in
+│   └── my_practice.js                        # full array reference — push/pop, map/filter/reduce, find/some/every, Math methods
 ├── MCQ/
 │   └── Array_MCQ.md                          # array interview practice questions
 ├── SeleniumFramework/                         # Maven + TestNG Selenium project (src, pom.xml, testng.xml)
